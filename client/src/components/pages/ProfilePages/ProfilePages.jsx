@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCategories } from "../../../redux/features/categories";
 import { fetchProducts } from "../../../redux/features/products";
-import Header from "./Header";
-import MainPages from "./MainPages";
+import AddCategory from "./AddCategory";
+import AddProduct from "./AddProduct";
 
 
-function Home() {
+
+function ProfilePages() {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.products.loading);
   const error = useSelector((state) => state.products.error);
@@ -25,11 +25,10 @@ function Home() {
     return <div>{error}</div>;
   }
   return ( <>
-  <Header />
-  <MainPages />
-
+  <AddProduct/>
+  <AddCategory/>
   </>
   )
 }
 
-export default Home;
+export default ProfilePages;

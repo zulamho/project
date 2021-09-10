@@ -70,7 +70,7 @@ function Header() {
         <Grid item className={classes.head}>
           <h2><NavLink  className={classes.cardH2} to="/">Квадрокоптеры</NavLink></h2>
           <Grid item className={classes.links}>
-            <NavLink className={classes.link} to={"/addproduct"}>
+            <NavLink className={classes.link} to={"/profilePages"}>
               Личный кабинет
             </NavLink>
           </Grid>

@@ -10,10 +10,14 @@ function AddProduct() {
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
 
   const handleAddName = (e) => {
     setName(e.target.value);
   };
+  const handleAddCategory = (e) =>{
+    setCategory(e.target.value);
+  }
 
   const handleAddPrice = (e) => {
     setPrice(e.target.value);
@@ -24,7 +28,7 @@ function AddProduct() {
   };
 
   const handleAddProduct = () => {
-    dispatch(addProduct(name, price));
+    dispatch(addProduct(name, price,category));
   };
 
   return (
@@ -37,6 +41,15 @@ function AddProduct() {
         rows={1}
         value={name}
         onChange={handleAddName}
+        variant="outlined"
+      />
+      <TextField
+        id="outlined-multiline-static"
+        label="Выберите категорию"
+        multiline
+        rows={1}
+        value={category}
+        onChange={handleAddCategory}
         variant="outlined"
       />
       <TextField

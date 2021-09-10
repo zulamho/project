@@ -2,10 +2,8 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchProducts,
-  removeProducts,
-} from "../../../redux/features/products";
+import { fetchCategories, removeCategory } from "../../../redux/features/categories";
+import { NavLink } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) =>
@@ -17,27 +15,29 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-function MainPages(props) {
+function MainCategories(props) {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const products = useSelector((state) => state.products.product);
-  
+  const categories = useSelector((state) => state.products.product);
+  console.log(categories)
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
 
   const handleDelete = (id) => {
-    dispatch(removeProducts(id));
+    dispatch(removeCategory(id));
   };
   return (
     <div>
-      {products?.map((item) => {
+      {categories?.map((item) => {
         return (
           <Grid className={classes.card}>
-            {item.id}
-            <img src={item.pathImages} alt="" />
-            {item.name}
-            {item.image}
-            {item.price}
-            {item.category}
+            {item._id}
+            
             <Grid>
+            <NavLink className={classes.link} to={item._id}>
+            {item.name}
+            </NavLink>
               <button
                 onClick={() => {
                   handleDelete(item._id);
@@ -53,4 +53,4 @@ function MainPages(props) {
   );
 }
 
-export default MainPages;
+export default MainCategories;
