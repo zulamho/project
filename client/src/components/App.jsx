@@ -7,6 +7,7 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import MainCategories from "./pages/HomePage/MainCategories";
 import AddCategory from "./pages/ProfilePages/AddCategory";
 import ProfilePages from "./pages/ProfilePages/ProfilePages";
+import Test from "./pages/ProfilePages/Test";
 
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path="/product/categories" exact>
           <MainCategories/>
+          </Route>
+          <Route path="/test" exact>
+          <Test/>
           </Route>
          
           {/* <Redirect to="/signin" /> */}

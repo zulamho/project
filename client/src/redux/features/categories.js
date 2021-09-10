@@ -63,27 +63,29 @@ const initialState = {
 export const fetchCategories = () => {
     return async (dispatch, getState) => {
       const state = getState();
-      dispatch({ type: "product/fetch-products/pending" });
+      dispatch({ type: "categories/fulfilled" });
       try {
         const response = await fetch("http://localhost:4000/categories", {
           headers: {
             Authorization: `Bearer ${state.application.token}`,
           },
         });
+        console.log(response)
   
         const json = await response.json();
+        console.log(json)
   
         if (json.error) {
           dispatch({
-            type: "product/fetch-products/rejected",
+            type: "ss",
             error: "При запросе на сервер произошла ошибка",
           });
         } else {
-          dispatch({ type: "product/fetch-products/fulfilled", payload: json });
+          dispatch({ type: "category/post/fulfilled", payload: json });
         }
       } catch (e) {
         dispatch({
-          type: "product/fetch-products/rejected",
+          type: "categories/rejected",
           error: e.toString(),
         });
       }
