@@ -79,9 +79,7 @@ function AddProduct() {
   const [category, setCategory] = useState("");
   const categories = useSelector((state) => state.products.produc);
 
-  useEffect(() => {
-    dispatch(fetchProductss());
-  }, [dispatch]);
+ 
 
   const handleAddName = (e) => {
     setName(e.target.value);
@@ -112,27 +110,8 @@ function AddProduct() {
     <Container>
       
       <Header />
-      <FormControl className={classes.margin}>
-        <InputLabel htmlFor="demo-customized-textbox">Название</InputLabel>
-        <BootstrapInput id="demo-customized-textbox" />
-      </FormControl>
-
-      <FormControl className={classes.margin}>
-        <InputLabel htmlFor="demo-customized-select-native">Категории</InputLabel>
-        <NativeSelect
-          id="demo-customized-select-native"
-        //   value={age}
-          onChange={handleChange}
-          input={<BootstrapInput />}
-        >
-           {categories?.map((item) => {
-        return (
-            <option value={10}>{item.name}</option>
-        );
-      })}
-        </NativeSelect>
-      </FormControl>
-      {/* <TextField
+      
+      <TextField
         id="outlined-multiline-static"
         label="Введите имя"
         multiline
@@ -140,7 +119,7 @@ function AddProduct() {
         value={name}
         onChange={handleAddName}
         variant="outlined"
-      /> */}
+      />
       <TextField
         id="outlined-multiline-static"
         label="Выберите категорию"

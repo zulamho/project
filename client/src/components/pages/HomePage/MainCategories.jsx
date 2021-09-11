@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories, removeCategory } from "../../../redux/features/categories";
 import { NavLink } from "react-router-dom";
+import { fetchProducts } from "../../../redux/features/products";
 
 
 const useStyles = makeStyles((theme) =>
@@ -21,7 +22,7 @@ function MainCategories(props) {
   const categories = useSelector((state) => state.products.product);
   console.log(categories)
   useEffect(() => {
-    dispatch(fetchCategories());
+    dispatch(fetchProducts());
   }, [dispatch]);
 
   const handleDelete = (id) => {
