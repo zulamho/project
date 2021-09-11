@@ -1,6 +1,7 @@
 const initialState = {
   loading: true,
   product: [],
+  filter: "",
   error: null,
   image: [],
 };
@@ -61,6 +62,11 @@ export default function products(state = initialState, action) {
         product: state.product.filter(
           (products) => products.id !== action.payload
         ),
+      };
+      case "products/filter/fulfilled":
+      return {
+        ...state,
+        filter: action.payload,
       };
 
     default:
@@ -186,5 +192,13 @@ export const editProducts = (id,name, price,) => {
         dispatch({ type: "product/edit", payload: id });
       });
       window.location.reload();
+  };
+};
+
+
+export const setFilterText = (text) => {
+  return {
+    type: "products/filter/fulfilled",
+    payload: text,
   };
 };

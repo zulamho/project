@@ -3,6 +3,7 @@ import { makeStyles, createStyles } from "@material-ui/core/styles";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchProductOne } from "../../../redux/features/productOne";
 import {
   fetchProducts,
   removeProducts,
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-function MainPages(props) {
+function MainPagesProduct(props) {
   const dispatch = useDispatch();
   const classes = useStyles();
   // const products = useSelector((state) => state.products.product);
@@ -43,7 +44,7 @@ function MainPages(props) {
   console.log(products)
 
   const handleDelete = (id) => {
-    dispatch(removeProducts(id));
+    dispatch(fetchProductOne(id));
   };
   return (
     <div>
@@ -56,7 +57,6 @@ function MainPages(props) {
             Изменить
             </Link>
             {item.image}
-            {item.name}
             {item.price}
             {item.category}
             <Grid>
@@ -75,4 +75,4 @@ function MainPages(props) {
   );
 }
 
-export default MainPages;
+export default MainPagesProduct;

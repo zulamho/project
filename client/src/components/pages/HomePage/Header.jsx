@@ -1,9 +1,12 @@
 import { Container } from "@material-ui/core";
 import React from "react";
-import { useSelector } from "react-redux";
+
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { NavLink } from "react-router-dom";
+import { Button, InputBase } from "@material-ui/core";
+import { setFilterText } from "../../../redux/features/products";
+import { useDispatch, useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -42,6 +45,8 @@ const useStyles = makeStyles((theme) =>
 
 function Header() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const filter = useSelector(state => state.products.filter)
 
   const token = useSelector((state) => state.application.token);
 
@@ -52,6 +57,11 @@ function Header() {
           <Grid item className={classes.head}>
             <h2 className={classes.cardH2}><NavLink to="/">Квадрокоптеры</NavLink></h2>
             <Grid item className={classes.links}>
+            <input type="text" value={filter} onChange={(e) => dispatch(setFilterText(e.target.value))}/>
+        
+
+            
+
               <NavLink className={classes.link} to={"/signin"}>
                 Авторизоваться
               </NavLink>
@@ -70,6 +80,7 @@ function Header() {
         <Grid item className={classes.head}>
           <h2><NavLink  className={classes.cardH2} to="/">Квадрокоптеры</NavLink></h2>
           <Grid item className={classes.links}>
+          <input type="text" value={filter} onChange={(e) => dispatch(setFilterText(e.target.value))}/>
             <NavLink className={classes.link} to={"/profilePages"}>
               Личный кабинет
             </NavLink>

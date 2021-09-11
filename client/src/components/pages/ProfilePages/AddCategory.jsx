@@ -23,9 +23,10 @@ function AddCategory() {
 
   return (
     <Container>
+      <h3>Дабавить категорию</h3>
       <TextField
         id="outlined-multiline-static"
-        label="Введите имя"
+        label="Название категории"
         multiline
         rows={1}
         value={name}

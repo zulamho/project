@@ -108,12 +108,13 @@ function AddProduct() {
 
   return (
     <Container>
-      
+     
       <Header />
+      <h3>Добавить товар</h3>
       
       <TextField
         id="outlined-multiline-static"
-        label="Введите имя"
+        label="Название товара"
         multiline
         rows={1}
         value={name}
